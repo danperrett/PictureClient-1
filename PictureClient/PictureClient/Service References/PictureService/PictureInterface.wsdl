@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:intf="http://server.picture.codinggain.org" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://server.picture.codinggain.org" targetNamespace="http://server.picture.codinggain.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://server.picture.codinggain.org">
+      <xsd:element name="uploadVideo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="filename" type="xsd:string" />
+            <xsd:element name="video" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="uploadVideoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="uploadVideoReturn" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="uploadFile">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="data" type="xsd:string" />
+            <xsd:element name="filename" type="xsd:string" />
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="project" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="uploadFileResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="uploadFileReturn" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getProjectPicIds">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="proj_id" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getProjectPicIdsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="getProjectPicIdsReturn" type="impl:PictureIdInfo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="PictureIdInfo">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int" />
+          <xsd:element name="filename" nillable="true" type="xsd:string" />
+          <xsd:element name="next_id" type="xsd:int" />
+          <xsd:element name="prev_id" type="xsd:int" />
+          <xsd:element name="proj_id" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="putPicture">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="data" type="xsd:string" />
+            <xsd:element name="filename" type="xsd:string" />
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="project" type="xsd:string" />
+            <xsd:element name="proj_id" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="putPictureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="putPictureReturn" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="removePicture">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="pic_id" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="removePictureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="removePictureReturn" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addCaption">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="pic_id" type="xsd:int" />
+            <xsd:element name="caption" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addCaptionResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getThumb">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" />
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getThumbResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getThumbReturn" type="impl:PictureInformation" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="PictureInformation">
+        <xsd:sequence>
+          <xsd:element name="filename" nillable="true" type="xsd:string" />
+          <xsd:element name="size" type="xsd:int" />
+          <xsd:element name="data" nillable="true" type="xsd:base64Binary" />
+          <xsd:element name="thumb" nillable="true" type="xsd:base64Binary" />
+          <xsd:element name="next_id" type="xsd:int" />
+          <xsd:element name="user_id" nillable="true" type="xsd:string" />
+          <xsd:element name="blog_id" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getProjects">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getProjectsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="getProjectsReturn" type="impl:ProjectInformation" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ProjectInformation">
+        <xsd:sequence>
+          <xsd:element name="projectName" nillable="true" type="xsd:string" />
+          <xsd:element name="id" type="xsd:int" />
+          <xsd:element name="username" nillable="true" type="xsd:string" />
+          <xsd:element name="firstId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getVideoList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getVideoListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getVideoListReturn" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createProject">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="project" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createProjectResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="createProjectReturn" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getPicture">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:int" />
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getPictureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getPictureReturn" type="impl:PictureInformation" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getVideo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="id" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getVideoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getVideoReturn" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkCredentials">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkCredentialsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="checkCredentialsReturn" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="rotateLeft">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="pic_id" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="rotateLeftResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="rotateLeftReturn" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="rotateRight">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+            <xsd:element name="pic_id" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="rotateRightResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="rotateRightReturn" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="addCaptionRequest">
+    <wsdl:part name="parameters" element="impl:addCaption" />
+  </wsdl:message>
+  <wsdl:message name="rotateRightRequest">
+    <wsdl:part name="parameters" element="impl:rotateRight" />
+  </wsdl:message>
+  <wsdl:message name="addCaptionResponse">
+    <wsdl:part name="parameters" element="impl:addCaptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPictureResponse">
+    <wsdl:part name="parameters" element="impl:getPictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="removePictureResponse">
+    <wsdl:part name="parameters" element="impl:removePictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProjectPicIdsRequest">
+    <wsdl:part name="parameters" element="impl:getProjectPicIds" />
+  </wsdl:message>
+  <wsdl:message name="rotateRightResponse">
+    <wsdl:part name="parameters" element="impl:rotateRightResponse" />
+  </wsdl:message>
+  <wsdl:message name="uploadFileRequest">
+    <wsdl:part name="parameters" element="impl:uploadFile" />
+  </wsdl:message>
+  <wsdl:message name="checkCredentialsRequest">
+    <wsdl:part name="parameters" element="impl:checkCredentials" />
+  </wsdl:message>
+  <wsdl:message name="rotateLeftRequest">
+    <wsdl:part name="parameters" element="impl:rotateLeft" />
+  </wsdl:message>
+  <wsdl:message name="getProjectsRequest">
+    <wsdl:part name="parameters" element="impl:getProjects" />
+  </wsdl:message>
+  <wsdl:message name="getProjectsResponse">
+    <wsdl:part name="parameters" element="impl:getProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVideoRequest">
+    <wsdl:part name="parameters" element="impl:getVideo" />
+  </wsdl:message>
+  <wsdl:message name="getProjectPicIdsResponse">
+    <wsdl:part name="parameters" element="impl:getProjectPicIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="uploadFileResponse">
+    <wsdl:part name="parameters" element="impl:uploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="removePictureRequest">
+    <wsdl:part name="parameters" element="impl:removePicture" />
+  </wsdl:message>
+  <wsdl:message name="getPictureRequest">
+    <wsdl:part name="parameters" element="impl:getPicture" />
+  </wsdl:message>
+  <wsdl:message name="rotateLeftResponse">
+    <wsdl:part name="parameters" element="impl:rotateLeftResponse" />
+  </wsdl:message>
+  <wsdl:message name="createProjectResponse">
+    <wsdl:part name="parameters" element="impl:createProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="getThumbResponse">
+    <wsdl:part name="parameters" element="impl:getThumbResponse" />
+  </wsdl:message>
+  <wsdl:message name="createProjectRequest">
+    <wsdl:part name="parameters" element="impl:createProject" />
+  </wsdl:message>
+  <wsdl:message name="getThumbRequest">
+    <wsdl:part name="parameters" element="impl:getThumb" />
+  </wsdl:message>
+  <wsdl:message name="uploadVideoRequest">
+    <wsdl:part name="parameters" element="impl:uploadVideo" />
+  </wsdl:message>
+  <wsdl:message name="getVideoListRequest">
+    <wsdl:part name="parameters" element="impl:getVideoList" />
+  </wsdl:message>
+  <wsdl:message name="getVideoResponse">
+    <wsdl:part name="parameters" element="impl:getVideoResponse" />
+  </wsdl:message>
+  <wsdl:message name="uploadVideoResponse">
+    <wsdl:part name="parameters" element="impl:uploadVideoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVideoListResponse">
+    <wsdl:part name="parameters" element="impl:getVideoListResponse" />
+  </wsdl:message>
+  <wsdl:message name="putPictureRequest">
+    <wsdl:part name="parameters" element="impl:putPicture" />
+  </wsdl:message>
+  <wsdl:message name="putPictureResponse">
+    <wsdl:part name="parameters" element="impl:putPictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkCredentialsResponse">
+    <wsdl:part name="parameters" element="impl:checkCredentialsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PictureInterface">
+    <wsdl:operation name="uploadVideo">
+      <wsdl:input name="uploadVideoRequest" message="impl:uploadVideoRequest" />
+      <wsdl:output name="uploadVideoResponse" message="impl:uploadVideoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="uploadFile">
+      <wsdl:input name="uploadFileRequest" message="impl:uploadFileRequest" />
+      <wsdl:output name="uploadFileResponse" message="impl:uploadFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProjectPicIds">
+      <wsdl:input name="getProjectPicIdsRequest" message="impl:getProjectPicIdsRequest" />
+      <wsdl:output name="getProjectPicIdsResponse" message="impl:getProjectPicIdsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="putPicture">
+      <wsdl:input name="putPictureRequest" message="impl:putPictureRequest" />
+      <wsdl:output name="putPictureResponse" message="impl:putPictureResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="removePicture">
+      <wsdl:input name="removePictureRequest" message="impl:removePictureRequest" />
+      <wsdl:output name="removePictureResponse" message="impl:removePictureResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addCaption">
+      <wsdl:input name="addCaptionRequest" message="impl:addCaptionRequest" />
+      <wsdl:output name="addCaptionResponse" message="impl:addCaptionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getThumb">
+      <wsdl:input name="getThumbRequest" message="impl:getThumbRequest" />
+      <wsdl:output name="getThumbResponse" message="impl:getThumbResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProjects">
+      <wsdl:input name="getProjectsRequest" message="impl:getProjectsRequest" />
+      <wsdl:output name="getProjectsResponse" message="impl:getProjectsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getVideoList">
+      <wsdl:input name="getVideoListRequest" message="impl:getVideoListRequest" />
+      <wsdl:output name="getVideoListResponse" message="impl:getVideoListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createProject">
+      <wsdl:input name="createProjectRequest" message="impl:createProjectRequest" />
+      <wsdl:output name="createProjectResponse" message="impl:createProjectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getPicture">
+      <wsdl:input name="getPictureRequest" message="impl:getPictureRequest" />
+      <wsdl:output name="getPictureResponse" message="impl:getPictureResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getVideo">
+      <wsdl:input name="getVideoRequest" message="impl:getVideoRequest" />
+      <wsdl:output name="getVideoResponse" message="impl:getVideoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="checkCredentials">
+      <wsdl:input name="checkCredentialsRequest" message="impl:checkCredentialsRequest" />
+      <wsdl:output name="checkCredentialsResponse" message="impl:checkCredentialsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="rotateLeft">
+      <wsdl:input name="rotateLeftRequest" message="impl:rotateLeftRequest" />
+      <wsdl:output name="rotateLeftResponse" message="impl:rotateLeftResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="rotateRight">
+      <wsdl:input name="rotateRightRequest" message="impl:rotateRightRequest" />
+      <wsdl:output name="rotateRightResponse" message="impl:rotateRightResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PictureInterfaceSoapBinding" type="impl:PictureInterface">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="uploadVideo">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="uploadVideoRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="uploadVideoResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uploadFile">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="uploadFileRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="uploadFileResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProjectPicIds">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getProjectPicIdsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getProjectPicIdsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putPicture">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="putPictureRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="putPictureResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removePicture">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="removePictureRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="removePictureResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCaption">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addCaptionRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addCaptionResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getThumb">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getThumbRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getThumbResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProjects">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getProjectsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getProjectsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVideoList">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getVideoListRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getVideoListResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createProject">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="createProjectRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createProjectResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPicture">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getPictureRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getPictureResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVideo">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getVideoRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getVideoResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkCredentials">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="checkCredentialsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="checkCredentialsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rotateLeft">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="rotateLeftRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="rotateLeftResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rotateRight">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="rotateRightRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="rotateRightResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PictureInterfaceService">
+    <wsdl:port name="PictureInterface" binding="impl:PictureInterfaceSoapBinding">
+      <wsdlsoap:address location="http://www.codinggain.com/PictureServer/services/PictureInterface" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
