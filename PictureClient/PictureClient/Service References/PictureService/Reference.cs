@@ -17,94 +17,6 @@ namespace PictureClient.PictureService {
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="uploadVideoReturn")]
-        int uploadVideo(string username, string password, string filename, string video);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="uploadVideoReturn")]
-        System.Threading.Tasks.Task<int> uploadVideoAsync(string username, string password, string filename, string video);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="uploadFileReturn")]
-        int uploadFile(string data, string filename, string username, string password, string project);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="uploadFileReturn")]
-        System.Threading.Tasks.Task<int> uploadFileAsync(string data, string filename, string username, string password, string project);
-        
-        // CODEGEN: Parameter 'getProjectPicIdsReturn' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="getProjectPicIdsReturn")]
-        PictureClient.PictureService.getProjectPicIdsResponse getProjectPicIds(PictureClient.PictureService.getProjectPicIdsRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<PictureClient.PictureService.getProjectPicIdsResponse> getProjectPicIdsAsync(PictureClient.PictureService.getProjectPicIdsRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="putPictureReturn")]
-        int putPicture(string data, string filename, string username, string password, string project, int proj_id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="putPictureReturn")]
-        System.Threading.Tasks.Task<int> putPictureAsync(string data, string filename, string username, string password, string project, int proj_id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="removePictureReturn")]
-        int removePicture(string username, string password, int pic_id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="removePictureReturn")]
-        System.Threading.Tasks.Task<int> removePictureAsync(string username, string password, int pic_id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void addCaption(string username, string password, int pic_id, string caption);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task addCaptionAsync(string username, string password, int pic_id, string caption);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="getThumbReturn")]
-        PictureClient.PictureService.PictureInformation getThumb(int id, string username, string password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="getThumbReturn")]
-        System.Threading.Tasks.Task<PictureClient.PictureService.PictureInformation> getThumbAsync(int id, string username, string password);
-        
-        // CODEGEN: Parameter 'getProjectsReturn' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="getProjectsReturn")]
-        PictureClient.PictureService.getProjectsResponse getProjects(PictureClient.PictureService.getProjectsRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task<PictureClient.PictureService.getProjectsResponse> getProjectsAsync(PictureClient.PictureService.getProjectsRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="getVideoListReturn")]
-        string getVideoList(string username, string password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="getVideoListReturn")]
-        System.Threading.Tasks.Task<string> getVideoListAsync(string username, string password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="createProjectReturn")]
-        int createProject(string username, string password, string project);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="createProjectReturn")]
-        System.Threading.Tasks.Task<int> createProjectAsync(string username, string password, string project);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="getPictureReturn")]
         PictureClient.PictureService.PictureInformation getPicture(int id, string username, string password);
         
@@ -114,12 +26,64 @@ namespace PictureClient.PictureService {
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getUploadRightsReturn")]
+        PictureClient.PictureService.EncryptionData getUploadRights(string username, string password, bool encode, int random_access, string filename, int filesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getUploadRightsReturn")]
+        System.Threading.Tasks.Task<PictureClient.PictureService.EncryptionData> getUploadRightsAsync(string username, string password, bool encode, int random_access, string filename, int filesize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="removePictureReturn")]
+        int removePicture(string username, string password, int pic_id, int access_key_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="removePictureReturn")]
+        System.Threading.Tasks.Task<int> removePictureAsync(string username, string password, int pic_id, int access_key_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getVideoListReturn")]
+        string getVideoList(string username, string password, int access_key_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getVideoListReturn")]
+        System.Threading.Tasks.Task<string> getVideoListAsync(string username, string password, int access_key_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="getVideoReturn")]
-        string getVideo(string username, string password, int id);
+        string getVideo(string username, string password, int id, int access_key_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="getVideoReturn")]
-        System.Threading.Tasks.Task<string> getVideoAsync(string username, string password, int id);
+        System.Threading.Tasks.Task<string> getVideoAsync(string username, string password, int id, int access_key_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="uploadVideoReturn")]
+        int uploadVideo(string username, string password, string filename, string video, int access_key_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="uploadVideoReturn")]
+        System.Threading.Tasks.Task<int> uploadVideoAsync(string username, string password, string filename, string video, int access_key_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void addCaption(string username, string password, int pic_id, string caption, int access_key_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        System.Threading.Tasks.Task addCaptionAsync(string username, string password, int pic_id, string caption, int access_key_id);
+        
+        // CODEGEN: Parameter 'getFileInformationReturn' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getFileInformationReturn")]
+        PictureClient.PictureService.getFileInformationResponse getFileInformation(PictureClient.PictureService.getFileInformationRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        System.Threading.Tasks.Task<PictureClient.PictureService.getFileInformationResponse> getFileInformationAsync(PictureClient.PictureService.getFileInformationRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -132,187 +96,115 @@ namespace PictureClient.PictureService {
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getDownloadFileRightsReturn")]
+        PictureClient.PictureService.EncryptionData getDownloadFileRights(string username, string password, bool encoded, int random_access, int fileId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getDownloadFileRightsReturn")]
+        System.Threading.Tasks.Task<PictureClient.PictureService.EncryptionData> getDownloadFileRightsAsync(string username, string password, bool encoded, int random_access, int fileId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getDownloadRightsReturn")]
+        PictureClient.PictureService.EncryptionData getDownloadRights(string username, string password, bool encode, int random_access);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getDownloadRightsReturn")]
+        System.Threading.Tasks.Task<PictureClient.PictureService.EncryptionData> getDownloadRightsAsync(string username, string password, bool encode, int random_access);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="downloadFileReturn")]
+        PictureClient.PictureService.FileDownloadInfo downloadFile(string username, string password, int fileId, int access_key_id, int random_access, int part);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="downloadFileReturn")]
+        System.Threading.Tasks.Task<PictureClient.PictureService.FileDownloadInfo> downloadFileAsync(string username, string password, int fileId, int access_key_id, int random_access, int part);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="uploadFileReturn")]
+        int uploadFile(string data, string filename, string username, string password, string project, int access_key_id, int random_access, int numberOf);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="uploadFileReturn")]
+        System.Threading.Tasks.Task<int> uploadFileAsync(string data, string filename, string username, string password, string project, int access_key_id, int random_access, int numberOf);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="putPictureReturn")]
+        int putPicture(string data, string filename, string username, string password, string project, int proj_id, int access_key_id, int random_access, int numberOf);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="putPictureReturn")]
+        System.Threading.Tasks.Task<int> putPictureAsync(string data, string filename, string username, string password, string project, int proj_id, int access_key_id, int random_access, int numberOf);
+        
+        // CODEGEN: Parameter 'getProjectPicIdsReturn' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getProjectPicIdsReturn")]
+        PictureClient.PictureService.getProjectPicIdsResponse getProjectPicIds(PictureClient.PictureService.getProjectPicIdsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        System.Threading.Tasks.Task<PictureClient.PictureService.getProjectPicIdsResponse> getProjectPicIdsAsync(PictureClient.PictureService.getProjectPicIdsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="deleteFileReturn")]
+        bool deleteFile(string username, string password, int id, int access_key_id, int random_access);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="deleteFileReturn")]
+        System.Threading.Tasks.Task<bool> deleteFileAsync(string username, string password, int id, int access_key_id, int random_access);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getThumbReturn")]
+        PictureClient.PictureService.PictureInformation getThumb(int id, string username, string password, int access_key_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getThumbReturn")]
+        System.Threading.Tasks.Task<PictureClient.PictureService.PictureInformation> getThumbAsync(int id, string username, string password, int access_key_id);
+        
+        // CODEGEN: Parameter 'getProjectsReturn' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="getProjectsReturn")]
+        PictureClient.PictureService.getProjectsResponse getProjects(PictureClient.PictureService.getProjectsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        System.Threading.Tasks.Task<PictureClient.PictureService.getProjectsResponse> getProjectsAsync(PictureClient.PictureService.getProjectsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="createProjectReturn")]
+        int createProject(string username, string password, string project, int access_key_id, int random_acccess);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="createProjectReturn")]
+        System.Threading.Tasks.Task<int> createProjectAsync(string username, string password, string project, int access_key_id, int random_acccess);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="rotateLeftReturn")]
-        int rotateLeft(string username, string password, int pic_id);
+        int rotateLeft(string username, string password, int pic_id, int access_key_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="rotateLeftReturn")]
-        System.Threading.Tasks.Task<int> rotateLeftAsync(string username, string password, int pic_id);
+        System.Threading.Tasks.Task<int> rotateLeftAsync(string username, string password, int pic_id, int access_key_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="rotateRightReturn")]
-        int rotateRight(string username, string password, int pic_id);
+        int rotateRight(string username, string password, int pic_id, int access_key_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [return: System.ServiceModel.MessageParameterAttribute(Name="rotateRightReturn")]
-        System.Threading.Tasks.Task<int> rotateRightAsync(string username, string password, int pic_id);
+        System.Threading.Tasks.Task<int> rotateRightAsync(string username, string password, int pic_id, int access_key_id);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://server.picture.codinggain.org")]
-    public partial class PictureIdInfo : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private int idField;
-        
-        private string filenameField;
-        
-        private int next_idField;
-        
-        private int prev_idField;
-        
-        private int proj_idField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public string filename {
-            get {
-                return this.filenameField;
-            }
-            set {
-                this.filenameField = value;
-                this.RaisePropertyChanged("filename");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
-        public int next_id {
-            get {
-                return this.next_idField;
-            }
-            set {
-                this.next_idField = value;
-                this.RaisePropertyChanged("next_id");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int prev_id {
-            get {
-                return this.prev_idField;
-            }
-            set {
-                this.prev_idField = value;
-                this.RaisePropertyChanged("prev_id");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public int proj_id {
-            get {
-                return this.proj_idField;
-            }
-            set {
-                this.proj_idField = value;
-                this.RaisePropertyChanged("proj_id");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://server.picture.codinggain.org")]
-    public partial class ProjectInformation : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string projectNameField;
-        
-        private int idField;
-        
-        private string usernameField;
-        
-        private int firstIdField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public string projectName {
-            get {
-                return this.projectNameField;
-            }
-            set {
-                this.projectNameField = value;
-                this.RaisePropertyChanged("projectName");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public string username {
-            get {
-                return this.usernameField;
-            }
-            set {
-                this.usernameField = value;
-                this.RaisePropertyChanged("username");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public int firstId {
-            get {
-                return this.firstIdField;
-            }
-            set {
-                this.firstIdField = value;
-                this.RaisePropertyChanged("firstId");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3163.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -332,6 +224,12 @@ namespace PictureClient.PictureService {
         private string user_idField;
         
         private int blog_idField;
+        
+        private string file_locationField;
+        
+        private int part_ofField;
+        
+        private int sizeofchunkField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
@@ -417,6 +315,42 @@ namespace PictureClient.PictureService {
             }
         }
         
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
+        public string file_location {
+            get {
+                return this.file_locationField;
+            }
+            set {
+                this.file_locationField = value;
+                this.RaisePropertyChanged("file_location");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public int part_of {
+            get {
+                return this.part_ofField;
+            }
+            set {
+                this.part_ofField = value;
+                this.RaisePropertyChanged("part_of");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public int sizeofchunk {
+            get {
+                return this.sizeofchunkField;
+            }
+            set {
+                this.sizeofchunkField = value;
+                this.RaisePropertyChanged("sizeofchunk");
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -424,6 +358,447 @@ namespace PictureClient.PictureService {
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3163.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://server.picture.codinggain.org")]
+    public partial class ProjectInformation : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string projectNameField;
+        
+        private int idField;
+        
+        private string usernameField;
+        
+        private int firstIdField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string projectName {
+            get {
+                return this.projectNameField;
+            }
+            set {
+                this.projectNameField = value;
+                this.RaisePropertyChanged("projectName");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public string username {
+            get {
+                return this.usernameField;
+            }
+            set {
+                this.usernameField = value;
+                this.RaisePropertyChanged("username");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int firstId {
+            get {
+                return this.firstIdField;
+            }
+            set {
+                this.firstIdField = value;
+                this.RaisePropertyChanged("firstId");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3163.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://server.picture.codinggain.org")]
+    public partial class FileDownloadInfo : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int sizeofchunkField;
+        
+        private int part_ofField;
+        
+        private string dataField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int sizeofchunk {
+            get {
+                return this.sizeofchunkField;
+            }
+            set {
+                this.sizeofchunkField = value;
+                this.RaisePropertyChanged("sizeofchunk");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int part_of {
+            get {
+                return this.part_ofField;
+            }
+            set {
+                this.part_ofField = value;
+                this.RaisePropertyChanged("part_of");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public string data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
+                this.RaisePropertyChanged("data");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(FileInformation))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3163.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://server.picture.codinggain.org")]
+    public partial class PictureIdInfo : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idField;
+        
+        private string filenameField;
+        
+        private int next_idField;
+        
+        private int prev_idField;
+        
+        private int proj_idField;
+        
+        private int sizeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public string filename {
+            get {
+                return this.filenameField;
+            }
+            set {
+                this.filenameField = value;
+                this.RaisePropertyChanged("filename");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int next_id {
+            get {
+                return this.next_idField;
+            }
+            set {
+                this.next_idField = value;
+                this.RaisePropertyChanged("next_id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public int prev_id {
+            get {
+                return this.prev_idField;
+            }
+            set {
+                this.prev_idField = value;
+                this.RaisePropertyChanged("prev_id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public int proj_id {
+            get {
+                return this.proj_idField;
+            }
+            set {
+                this.proj_idField = value;
+                this.RaisePropertyChanged("proj_id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public int size {
+            get {
+                return this.sizeField;
+            }
+            set {
+                this.sizeField = value;
+                this.RaisePropertyChanged("size");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3163.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://server.picture.codinggain.org")]
+    public partial class FileInformation : PictureIdInfo {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3163.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://server.picture.codinggain.org")]
+    public partial class EncryptionData : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string tmpFilenameField;
+        
+        private int encrypt_keyField;
+        
+        private int access_key_idField;
+        
+        private System.Nullable<System.DateTime> dateField;
+        
+        private bool useableField;
+        
+        private string messageField;
+        
+        private int splitIntoField;
+        
+        private string filenameField;
+        
+        private bool usePutPicturesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public string tmpFilename {
+            get {
+                return this.tmpFilenameField;
+            }
+            set {
+                this.tmpFilenameField = value;
+                this.RaisePropertyChanged("tmpFilename");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int encrypt_key {
+            get {
+                return this.encrypt_keyField;
+            }
+            set {
+                this.encrypt_keyField = value;
+                this.RaisePropertyChanged("encrypt_key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int access_key_id {
+            get {
+                return this.access_key_idField;
+            }
+            set {
+                this.access_key_idField = value;
+                this.RaisePropertyChanged("access_key_id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=3)]
+        public System.Nullable<System.DateTime> date {
+            get {
+                return this.dateField;
+            }
+            set {
+                this.dateField = value;
+                this.RaisePropertyChanged("date");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public bool useable {
+            get {
+                return this.useableField;
+            }
+            set {
+                this.useableField = value;
+                this.RaisePropertyChanged("useable");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=5)]
+        public string message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+                this.RaisePropertyChanged("message");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public int splitInto {
+            get {
+                return this.splitIntoField;
+            }
+            set {
+                this.splitIntoField = value;
+                this.RaisePropertyChanged("splitInto");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=7)]
+        public string filename {
+            get {
+                return this.filenameField;
+            }
+            set {
+                this.filenameField = value;
+                this.RaisePropertyChanged("filename");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public bool usePutPictures {
+            get {
+                return this.usePutPicturesField;
+            }
+            set {
+                this.usePutPicturesField = value;
+                this.RaisePropertyChanged("usePutPictures");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getFileInformation", WrapperNamespace="http://server.picture.codinggain.org", IsWrapped=true)]
+    public partial class getFileInformationRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://server.picture.codinggain.org", Order=0)]
+        public string username;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://server.picture.codinggain.org", Order=1)]
+        public string password;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://server.picture.codinggain.org", Order=2)]
+        public int access_key_id;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://server.picture.codinggain.org", Order=3)]
+        public int random_access;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://server.picture.codinggain.org", Order=4)]
+        public int scratchId;
+        
+        public getFileInformationRequest() {
+        }
+        
+        public getFileInformationRequest(string username, string password, int access_key_id, int random_access, int scratchId) {
+            this.username = username;
+            this.password = password;
+            this.access_key_id = access_key_id;
+            this.random_access = random_access;
+            this.scratchId = scratchId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getFileInformationResponse", WrapperNamespace="http://server.picture.codinggain.org", IsWrapped=true)]
+    public partial class getFileInformationResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://server.picture.codinggain.org", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("getFileInformationReturn")]
+        public PictureClient.PictureService.FileInformation[] getFileInformationReturn;
+        
+        public getFileInformationResponse() {
+        }
+        
+        public getFileInformationResponse(PictureClient.PictureService.FileInformation[] getFileInformationReturn) {
+            this.getFileInformationReturn = getFileInformationReturn;
         }
     }
     
@@ -442,13 +817,17 @@ namespace PictureClient.PictureService {
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://server.picture.codinggain.org", Order=2)]
         public int proj_id;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://server.picture.codinggain.org", Order=3)]
+        public int access_key_id;
+        
         public getProjectPicIdsRequest() {
         }
         
-        public getProjectPicIdsRequest(string username, string password, int proj_id) {
+        public getProjectPicIdsRequest(string username, string password, int proj_id, int access_key_id) {
             this.username = username;
             this.password = password;
             this.proj_id = proj_id;
+            this.access_key_id = access_key_id;
         }
     }
     
@@ -482,12 +861,16 @@ namespace PictureClient.PictureService {
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://server.picture.codinggain.org", Order=1)]
         public string password;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://server.picture.codinggain.org", Order=2)]
+        public int access_key_id;
+        
         public getProjectsRequest() {
         }
         
-        public getProjectsRequest(string username, string password) {
+        public getProjectsRequest(string username, string password, int access_key_id) {
             this.username = username;
             this.password = password;
+            this.access_key_id = access_key_id;
         }
     }
     
@@ -536,122 +919,6 @@ namespace PictureClient.PictureService {
                 base(binding, remoteAddress) {
         }
         
-        public int uploadVideo(string username, string password, string filename, string video) {
-            return base.Channel.uploadVideo(username, password, filename, video);
-        }
-        
-        public System.Threading.Tasks.Task<int> uploadVideoAsync(string username, string password, string filename, string video) {
-            return base.Channel.uploadVideoAsync(username, password, filename, video);
-        }
-        
-        public int uploadFile(string data, string filename, string username, string password, string project) {
-            return base.Channel.uploadFile(data, filename, username, password, project);
-        }
-        
-        public System.Threading.Tasks.Task<int> uploadFileAsync(string data, string filename, string username, string password, string project) {
-            return base.Channel.uploadFileAsync(data, filename, username, password, project);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PictureClient.PictureService.getProjectPicIdsResponse PictureClient.PictureService.PictureInterface.getProjectPicIds(PictureClient.PictureService.getProjectPicIdsRequest request) {
-            return base.Channel.getProjectPicIds(request);
-        }
-        
-        public PictureClient.PictureService.PictureIdInfo[] getProjectPicIds(string username, string password, int proj_id) {
-            PictureClient.PictureService.getProjectPicIdsRequest inValue = new PictureClient.PictureService.getProjectPicIdsRequest();
-            inValue.username = username;
-            inValue.password = password;
-            inValue.proj_id = proj_id;
-            PictureClient.PictureService.getProjectPicIdsResponse retVal = ((PictureClient.PictureService.PictureInterface)(this)).getProjectPicIds(inValue);
-            return retVal.getProjectPicIdsReturn;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<PictureClient.PictureService.getProjectPicIdsResponse> PictureClient.PictureService.PictureInterface.getProjectPicIdsAsync(PictureClient.PictureService.getProjectPicIdsRequest request) {
-            return base.Channel.getProjectPicIdsAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<PictureClient.PictureService.getProjectPicIdsResponse> getProjectPicIdsAsync(string username, string password, int proj_id) {
-            PictureClient.PictureService.getProjectPicIdsRequest inValue = new PictureClient.PictureService.getProjectPicIdsRequest();
-            inValue.username = username;
-            inValue.password = password;
-            inValue.proj_id = proj_id;
-            return ((PictureClient.PictureService.PictureInterface)(this)).getProjectPicIdsAsync(inValue);
-        }
-        
-        public int putPicture(string data, string filename, string username, string password, string project, int proj_id) {
-            return base.Channel.putPicture(data, filename, username, password, project, proj_id);
-        }
-        
-        public System.Threading.Tasks.Task<int> putPictureAsync(string data, string filename, string username, string password, string project, int proj_id) {
-            return base.Channel.putPictureAsync(data, filename, username, password, project, proj_id);
-        }
-        
-        public int removePicture(string username, string password, int pic_id) {
-            return base.Channel.removePicture(username, password, pic_id);
-        }
-        
-        public System.Threading.Tasks.Task<int> removePictureAsync(string username, string password, int pic_id) {
-            return base.Channel.removePictureAsync(username, password, pic_id);
-        }
-        
-        public void addCaption(string username, string password, int pic_id, string caption) {
-            base.Channel.addCaption(username, password, pic_id, caption);
-        }
-        
-        public System.Threading.Tasks.Task addCaptionAsync(string username, string password, int pic_id, string caption) {
-            return base.Channel.addCaptionAsync(username, password, pic_id, caption);
-        }
-        
-        public PictureClient.PictureService.PictureInformation getThumb(int id, string username, string password) {
-            return base.Channel.getThumb(id, username, password);
-        }
-        
-        public System.Threading.Tasks.Task<PictureClient.PictureService.PictureInformation> getThumbAsync(int id, string username, string password) {
-            return base.Channel.getThumbAsync(id, username, password);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PictureClient.PictureService.getProjectsResponse PictureClient.PictureService.PictureInterface.getProjects(PictureClient.PictureService.getProjectsRequest request) {
-            return base.Channel.getProjects(request);
-        }
-        
-        public PictureClient.PictureService.ProjectInformation[] getProjects(string username, string password) {
-            PictureClient.PictureService.getProjectsRequest inValue = new PictureClient.PictureService.getProjectsRequest();
-            inValue.username = username;
-            inValue.password = password;
-            PictureClient.PictureService.getProjectsResponse retVal = ((PictureClient.PictureService.PictureInterface)(this)).getProjects(inValue);
-            return retVal.getProjectsReturn;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<PictureClient.PictureService.getProjectsResponse> PictureClient.PictureService.PictureInterface.getProjectsAsync(PictureClient.PictureService.getProjectsRequest request) {
-            return base.Channel.getProjectsAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<PictureClient.PictureService.getProjectsResponse> getProjectsAsync(string username, string password) {
-            PictureClient.PictureService.getProjectsRequest inValue = new PictureClient.PictureService.getProjectsRequest();
-            inValue.username = username;
-            inValue.password = password;
-            return ((PictureClient.PictureService.PictureInterface)(this)).getProjectsAsync(inValue);
-        }
-        
-        public string getVideoList(string username, string password) {
-            return base.Channel.getVideoList(username, password);
-        }
-        
-        public System.Threading.Tasks.Task<string> getVideoListAsync(string username, string password) {
-            return base.Channel.getVideoListAsync(username, password);
-        }
-        
-        public int createProject(string username, string password, string project) {
-            return base.Channel.createProject(username, password, project);
-        }
-        
-        public System.Threading.Tasks.Task<int> createProjectAsync(string username, string password, string project) {
-            return base.Channel.createProjectAsync(username, password, project);
-        }
-        
         public PictureClient.PictureService.PictureInformation getPicture(int id, string username, string password) {
             return base.Channel.getPicture(id, username, password);
         }
@@ -660,12 +927,83 @@ namespace PictureClient.PictureService {
             return base.Channel.getPictureAsync(id, username, password);
         }
         
-        public string getVideo(string username, string password, int id) {
-            return base.Channel.getVideo(username, password, id);
+        public PictureClient.PictureService.EncryptionData getUploadRights(string username, string password, bool encode, int random_access, string filename, int filesize) {
+            return base.Channel.getUploadRights(username, password, encode, random_access, filename, filesize);
         }
         
-        public System.Threading.Tasks.Task<string> getVideoAsync(string username, string password, int id) {
-            return base.Channel.getVideoAsync(username, password, id);
+        public System.Threading.Tasks.Task<PictureClient.PictureService.EncryptionData> getUploadRightsAsync(string username, string password, bool encode, int random_access, string filename, int filesize) {
+            return base.Channel.getUploadRightsAsync(username, password, encode, random_access, filename, filesize);
+        }
+        
+        public int removePicture(string username, string password, int pic_id, int access_key_id) {
+            return base.Channel.removePicture(username, password, pic_id, access_key_id);
+        }
+        
+        public System.Threading.Tasks.Task<int> removePictureAsync(string username, string password, int pic_id, int access_key_id) {
+            return base.Channel.removePictureAsync(username, password, pic_id, access_key_id);
+        }
+        
+        public string getVideoList(string username, string password, int access_key_id) {
+            return base.Channel.getVideoList(username, password, access_key_id);
+        }
+        
+        public System.Threading.Tasks.Task<string> getVideoListAsync(string username, string password, int access_key_id) {
+            return base.Channel.getVideoListAsync(username, password, access_key_id);
+        }
+        
+        public string getVideo(string username, string password, int id, int access_key_id) {
+            return base.Channel.getVideo(username, password, id, access_key_id);
+        }
+        
+        public System.Threading.Tasks.Task<string> getVideoAsync(string username, string password, int id, int access_key_id) {
+            return base.Channel.getVideoAsync(username, password, id, access_key_id);
+        }
+        
+        public int uploadVideo(string username, string password, string filename, string video, int access_key_id) {
+            return base.Channel.uploadVideo(username, password, filename, video, access_key_id);
+        }
+        
+        public System.Threading.Tasks.Task<int> uploadVideoAsync(string username, string password, string filename, string video, int access_key_id) {
+            return base.Channel.uploadVideoAsync(username, password, filename, video, access_key_id);
+        }
+        
+        public void addCaption(string username, string password, int pic_id, string caption, int access_key_id) {
+            base.Channel.addCaption(username, password, pic_id, caption, access_key_id);
+        }
+        
+        public System.Threading.Tasks.Task addCaptionAsync(string username, string password, int pic_id, string caption, int access_key_id) {
+            return base.Channel.addCaptionAsync(username, password, pic_id, caption, access_key_id);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PictureClient.PictureService.getFileInformationResponse PictureClient.PictureService.PictureInterface.getFileInformation(PictureClient.PictureService.getFileInformationRequest request) {
+            return base.Channel.getFileInformation(request);
+        }
+        
+        public PictureClient.PictureService.FileInformation[] getFileInformation(string username, string password, int access_key_id, int random_access, int scratchId) {
+            PictureClient.PictureService.getFileInformationRequest inValue = new PictureClient.PictureService.getFileInformationRequest();
+            inValue.username = username;
+            inValue.password = password;
+            inValue.access_key_id = access_key_id;
+            inValue.random_access = random_access;
+            inValue.scratchId = scratchId;
+            PictureClient.PictureService.getFileInformationResponse retVal = ((PictureClient.PictureService.PictureInterface)(this)).getFileInformation(inValue);
+            return retVal.getFileInformationReturn;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<PictureClient.PictureService.getFileInformationResponse> PictureClient.PictureService.PictureInterface.getFileInformationAsync(PictureClient.PictureService.getFileInformationRequest request) {
+            return base.Channel.getFileInformationAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<PictureClient.PictureService.getFileInformationResponse> getFileInformationAsync(string username, string password, int access_key_id, int random_access, int scratchId) {
+            PictureClient.PictureService.getFileInformationRequest inValue = new PictureClient.PictureService.getFileInformationRequest();
+            inValue.username = username;
+            inValue.password = password;
+            inValue.access_key_id = access_key_id;
+            inValue.random_access = random_access;
+            inValue.scratchId = scratchId;
+            return ((PictureClient.PictureService.PictureInterface)(this)).getFileInformationAsync(inValue);
         }
         
         public bool checkCredentials(string username, string password) {
@@ -676,20 +1014,140 @@ namespace PictureClient.PictureService {
             return base.Channel.checkCredentialsAsync(username, password);
         }
         
-        public int rotateLeft(string username, string password, int pic_id) {
-            return base.Channel.rotateLeft(username, password, pic_id);
+        public PictureClient.PictureService.EncryptionData getDownloadFileRights(string username, string password, bool encoded, int random_access, int fileId) {
+            return base.Channel.getDownloadFileRights(username, password, encoded, random_access, fileId);
         }
         
-        public System.Threading.Tasks.Task<int> rotateLeftAsync(string username, string password, int pic_id) {
-            return base.Channel.rotateLeftAsync(username, password, pic_id);
+        public System.Threading.Tasks.Task<PictureClient.PictureService.EncryptionData> getDownloadFileRightsAsync(string username, string password, bool encoded, int random_access, int fileId) {
+            return base.Channel.getDownloadFileRightsAsync(username, password, encoded, random_access, fileId);
         }
         
-        public int rotateRight(string username, string password, int pic_id) {
-            return base.Channel.rotateRight(username, password, pic_id);
+        public PictureClient.PictureService.EncryptionData getDownloadRights(string username, string password, bool encode, int random_access) {
+            return base.Channel.getDownloadRights(username, password, encode, random_access);
         }
         
-        public System.Threading.Tasks.Task<int> rotateRightAsync(string username, string password, int pic_id) {
-            return base.Channel.rotateRightAsync(username, password, pic_id);
+        public System.Threading.Tasks.Task<PictureClient.PictureService.EncryptionData> getDownloadRightsAsync(string username, string password, bool encode, int random_access) {
+            return base.Channel.getDownloadRightsAsync(username, password, encode, random_access);
+        }
+        
+        public PictureClient.PictureService.FileDownloadInfo downloadFile(string username, string password, int fileId, int access_key_id, int random_access, int part) {
+            return base.Channel.downloadFile(username, password, fileId, access_key_id, random_access, part);
+        }
+        
+        public System.Threading.Tasks.Task<PictureClient.PictureService.FileDownloadInfo> downloadFileAsync(string username, string password, int fileId, int access_key_id, int random_access, int part) {
+            return base.Channel.downloadFileAsync(username, password, fileId, access_key_id, random_access, part);
+        }
+        
+        public int uploadFile(string data, string filename, string username, string password, string project, int access_key_id, int random_access, int numberOf) {
+            return base.Channel.uploadFile(data, filename, username, password, project, access_key_id, random_access, numberOf);
+        }
+        
+        public System.Threading.Tasks.Task<int> uploadFileAsync(string data, string filename, string username, string password, string project, int access_key_id, int random_access, int numberOf) {
+            return base.Channel.uploadFileAsync(data, filename, username, password, project, access_key_id, random_access, numberOf);
+        }
+        
+        public int putPicture(string data, string filename, string username, string password, string project, int proj_id, int access_key_id, int random_access, int numberOf) {
+            return base.Channel.putPicture(data, filename, username, password, project, proj_id, access_key_id, random_access, numberOf);
+        }
+        
+        public System.Threading.Tasks.Task<int> putPictureAsync(string data, string filename, string username, string password, string project, int proj_id, int access_key_id, int random_access, int numberOf) {
+            return base.Channel.putPictureAsync(data, filename, username, password, project, proj_id, access_key_id, random_access, numberOf);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PictureClient.PictureService.getProjectPicIdsResponse PictureClient.PictureService.PictureInterface.getProjectPicIds(PictureClient.PictureService.getProjectPicIdsRequest request) {
+            return base.Channel.getProjectPicIds(request);
+        }
+        
+        public PictureClient.PictureService.PictureIdInfo[] getProjectPicIds(string username, string password, int proj_id, int access_key_id) {
+            PictureClient.PictureService.getProjectPicIdsRequest inValue = new PictureClient.PictureService.getProjectPicIdsRequest();
+            inValue.username = username;
+            inValue.password = password;
+            inValue.proj_id = proj_id;
+            inValue.access_key_id = access_key_id;
+            PictureClient.PictureService.getProjectPicIdsResponse retVal = ((PictureClient.PictureService.PictureInterface)(this)).getProjectPicIds(inValue);
+            return retVal.getProjectPicIdsReturn;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<PictureClient.PictureService.getProjectPicIdsResponse> PictureClient.PictureService.PictureInterface.getProjectPicIdsAsync(PictureClient.PictureService.getProjectPicIdsRequest request) {
+            return base.Channel.getProjectPicIdsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<PictureClient.PictureService.getProjectPicIdsResponse> getProjectPicIdsAsync(string username, string password, int proj_id, int access_key_id) {
+            PictureClient.PictureService.getProjectPicIdsRequest inValue = new PictureClient.PictureService.getProjectPicIdsRequest();
+            inValue.username = username;
+            inValue.password = password;
+            inValue.proj_id = proj_id;
+            inValue.access_key_id = access_key_id;
+            return ((PictureClient.PictureService.PictureInterface)(this)).getProjectPicIdsAsync(inValue);
+        }
+        
+        public bool deleteFile(string username, string password, int id, int access_key_id, int random_access) {
+            return base.Channel.deleteFile(username, password, id, access_key_id, random_access);
+        }
+        
+        public System.Threading.Tasks.Task<bool> deleteFileAsync(string username, string password, int id, int access_key_id, int random_access) {
+            return base.Channel.deleteFileAsync(username, password, id, access_key_id, random_access);
+        }
+        
+        public PictureClient.PictureService.PictureInformation getThumb(int id, string username, string password, int access_key_id) {
+            return base.Channel.getThumb(id, username, password, access_key_id);
+        }
+        
+        public System.Threading.Tasks.Task<PictureClient.PictureService.PictureInformation> getThumbAsync(int id, string username, string password, int access_key_id) {
+            return base.Channel.getThumbAsync(id, username, password, access_key_id);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PictureClient.PictureService.getProjectsResponse PictureClient.PictureService.PictureInterface.getProjects(PictureClient.PictureService.getProjectsRequest request) {
+            return base.Channel.getProjects(request);
+        }
+        
+        public PictureClient.PictureService.ProjectInformation[] getProjects(string username, string password, int access_key_id) {
+            PictureClient.PictureService.getProjectsRequest inValue = new PictureClient.PictureService.getProjectsRequest();
+            inValue.username = username;
+            inValue.password = password;
+            inValue.access_key_id = access_key_id;
+            PictureClient.PictureService.getProjectsResponse retVal = ((PictureClient.PictureService.PictureInterface)(this)).getProjects(inValue);
+            return retVal.getProjectsReturn;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<PictureClient.PictureService.getProjectsResponse> PictureClient.PictureService.PictureInterface.getProjectsAsync(PictureClient.PictureService.getProjectsRequest request) {
+            return base.Channel.getProjectsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<PictureClient.PictureService.getProjectsResponse> getProjectsAsync(string username, string password, int access_key_id) {
+            PictureClient.PictureService.getProjectsRequest inValue = new PictureClient.PictureService.getProjectsRequest();
+            inValue.username = username;
+            inValue.password = password;
+            inValue.access_key_id = access_key_id;
+            return ((PictureClient.PictureService.PictureInterface)(this)).getProjectsAsync(inValue);
+        }
+        
+        public int createProject(string username, string password, string project, int access_key_id, int random_acccess) {
+            return base.Channel.createProject(username, password, project, access_key_id, random_acccess);
+        }
+        
+        public System.Threading.Tasks.Task<int> createProjectAsync(string username, string password, string project, int access_key_id, int random_acccess) {
+            return base.Channel.createProjectAsync(username, password, project, access_key_id, random_acccess);
+        }
+        
+        public int rotateLeft(string username, string password, int pic_id, int access_key_id) {
+            return base.Channel.rotateLeft(username, password, pic_id, access_key_id);
+        }
+        
+        public System.Threading.Tasks.Task<int> rotateLeftAsync(string username, string password, int pic_id, int access_key_id) {
+            return base.Channel.rotateLeftAsync(username, password, pic_id, access_key_id);
+        }
+        
+        public int rotateRight(string username, string password, int pic_id, int access_key_id) {
+            return base.Channel.rotateRight(username, password, pic_id, access_key_id);
+        }
+        
+        public System.Threading.Tasks.Task<int> rotateRightAsync(string username, string password, int pic_id, int access_key_id) {
+            return base.Channel.rotateRightAsync(username, password, pic_id, access_key_id);
         }
     }
 }

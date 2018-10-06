@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PictureUploadForm));
             this.FileTextBox = new System.Windows.Forms.TextBox();
             this.Send = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.progressLabel = new System.Windows.Forms.Label();
             this.PictureQueueListBox = new System.Windows.Forms.ListBox();
             this.CreateButton = new System.Windows.Forms.Button();
             this.CreateTextBox = new System.Windows.Forms.TextBox();
             this.ResultLabel = new System.Windows.Forms.Label();
             this.ProjectComboBox = new System.Windows.Forms.ComboBox();
             this.BrowseButton = new System.Windows.Forms.Button();
+            this.FilesButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +62,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.FilesButton);
+            this.groupBox1.Controls.Add(this.progressLabel);
             this.groupBox1.Controls.Add(this.PictureQueueListBox);
             this.groupBox1.Controls.Add(this.CreateButton);
             this.groupBox1.Controls.Add(this.CreateTextBox);
@@ -69,9 +74,17 @@
             this.groupBox1.Controls.Add(this.FileTextBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(303, 307);
+            this.groupBox1.Size = new System.Drawing.Size(303, 352);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // progressLabel
+            // 
+            this.progressLabel.AutoSize = true;
+            this.progressLabel.Location = new System.Drawing.Point(210, 137);
+            this.progressLabel.Name = "progressLabel";
+            this.progressLabel.Size = new System.Drawing.Size(0, 13);
+            this.progressLabel.TabIndex = 8;
             // 
             // PictureQueueListBox
             // 
@@ -128,14 +141,25 @@
             this.BrowseButton.UseVisualStyleBackColor = true;
             this.BrowseButton.Click += new System.EventHandler(this.BrowseButton_Click);
             // 
+            // FilesButton
+            // 
+            this.FilesButton.Location = new System.Drawing.Point(7, 314);
+            this.FilesButton.Name = "FilesButton";
+            this.FilesButton.Size = new System.Drawing.Size(75, 23);
+            this.FilesButton.TabIndex = 9;
+            this.FilesButton.Text = "Files";
+            this.FilesButton.UseVisualStyleBackColor = true;
+            this.FilesButton.Click += new System.EventHandler(this.FilesButton_Click);
+            // 
             // PictureUploadForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 331);
+            this.ClientSize = new System.Drawing.Size(326, 376);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PictureUploadForm";
@@ -157,6 +181,8 @@
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.TextBox CreateTextBox;
         private System.Windows.Forms.ListBox PictureQueueListBox;
+        private System.Windows.Forms.Label progressLabel;
+        private System.Windows.Forms.Button FilesButton;
     }
 }
 

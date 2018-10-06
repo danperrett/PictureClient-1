@@ -22,7 +22,12 @@ namespace PictureClient
         static volatile bool running = false;
         delegate void uploadPictureDelegate();
         delegate void setResultLabelDelegate(string text);
+        delegate void updateLabelDelegate(string text);
         static string current_project = "";
+        string label = "";
+        System.Windows.Forms.Timer tl;
+        bool update = false;
+        FileListing listing = null;
 
         public PictureUploadForm()
         {
@@ -31,6 +36,11 @@ namespace PictureClient
             uploadThread = new Thread(UploadWork);
             uploadThread.Priority = ThreadPriority.BelowNormal;
             uploadThread.Start(this);
+            tl = new System.Windows.Forms.Timer();
+            tl.Tick += new EventHandler(Tl_Tick);
+            tl.Interval = 700;
+            tl.Enabled = true;
+            tl.Start();
         }
 
         public static void UploadWork(object data)
@@ -80,6 +90,7 @@ namespace PictureClient
             {
                 Close();
             }
+           
         }
 
         public string Project
@@ -93,22 +104,50 @@ namespace PictureClient
             }
         }
 
+        void Download(string savetoo, int id)
+        {
+            using (PictureService.PictureInterfaceClient service = new PictureService.PictureInterfaceClient())
+            {
+                PictureService.EncryptionData edata = service.getDownloadFileRights(username, password, false, 1, id);
+                BinaryWriter bw = new BinaryWriter(new FileStream(savetoo, FileMode.Create));
+                for (int n =0; n < edata.splitInto; n++)
+                {
+                    try
+                    {
+                        PictureService.FileDownloadInfo  info = service.downloadFile(username, password, id, edata.access_key_id, 1, n + 1);
+                        
+                        byte[] data = Convert.FromBase64String(info.data);
+                        bw.Write(data);
+                    }
+                    catch(Exception ex)
+                    {
+                        
+                    }
+                }
+                bw.Close();
+            }
+        }
+
         private void initialiseComboBox()
         { 
             using (PictureService.PictureInterfaceClient service = new PictureService.PictureInterfaceClient())
             {
-                PictureService.ProjectInformation[] info = service.getProjects(username, password);
-                int size = info.Length;
-                if (size > 0)
+                PictureService.EncryptionData edata = service.getDownloadRights(username, password, false, 1);
+                PictureService.ProjectInformation[] info = service.getProjects(username, password, edata.access_key_id);
+                if (info != null)
                 {
-                    System.Object[] ItemObject = new System.Object[size];
-                    for (int i = 0; i < size; i++)
+                    int size = info.Length;
+                    if (size > 0)
                     {
-                        ItemObject[i] = info[i].id + "-" + info[i].projectName;
+                        System.Object[] ItemObject = new System.Object[size];
+                        for (int i = 0; i < size; i++)
+                        {
+                            ItemObject[i] = info[i].id + "-" + info[i].projectName;
+                        }
+                        ProjectComboBox.Items.Clear();
+                        ProjectComboBox.Items.AddRange(ItemObject);
+                        ProjectComboBox.Text = info[0].id + "-" + info[0].projectName;
                     }
-                    ProjectComboBox.Items.Clear();
-                    ProjectComboBox.Items.AddRange(ItemObject);
-                    ProjectComboBox.Text = info[0].id + "-" + info[0].projectName;
                 }
             }
         }
@@ -131,6 +170,11 @@ namespace PictureClient
             {
                 int proj_id = 0;
                 string[] sp = null;
+                lock (label)
+                {
+                    label = "";
+                    update = true;
+                }
                 try
                 {
                     sp = project.Split('-');
@@ -139,25 +183,79 @@ namespace PictureClient
                     if (proj_id > 0)
                     {
                         byte[] fileBytes = File.ReadAllBytes(file);
+                        int size = fileBytes.Length;
                         String bas = Convert.ToBase64String(fileBytes);
                         int success = -1;
-                        if (FileName.ToLower().Contains(".jpg"))
+                        PictureService.EncryptionData edata = service.getUploadRights(username, password, false, 1, FileName, fileBytes.Length);
+                        int split = size / edata.splitInto;
+                        byte[] copyFile = new byte[split];
+                        int index = 0;
+                        for (int n = 0; n < edata.splitInto-1; n++)
                         {
-                            success = service.putPicture(bas, FileName, username, password, sp[1], proj_id);
+                            for(int i = 0; i < split; i++)
+                            {
+                                copyFile[i] = fileBytes[index + i];
+                            }
+                            bas = Convert.ToBase64String(copyFile);
+
+                            if (edata.useable && edata.usePutPictures)
+                            {
+                                success = service.putPicture(bas, FileName, username, password, sp[1], proj_id, edata.access_key_id, 1, n+1);
+                            }
+                            else
+                            {
+                                success = service.uploadFile(bas, FileName, username, password, sp[1], edata.access_key_id, 1, n+1);
+                            }
+                            size -= split;
+                            index += split;
+                        }
+                        copyFile = new byte[size];
+                        for (int i = 0; i < size; i++)
+                        {
+                            copyFile[i] = fileBytes[index + i];
+                        }
+                        bas = Convert.ToBase64String(copyFile);
+                        if (edata.useable && edata.usePutPictures)
+                        {
+                            success = service.putPicture(bas, FileName, username, password, sp[1], proj_id, edata.access_key_id, 1, edata.splitInto);
                         }
                         else
                         {
-                            success = service.uploadFile(bas, FileName, username, password, sp[1]);
+                            success = service.uploadFile(bas, FileName, username, password, sp[1], edata.access_key_id, 1, edata.splitInto);
                         }
-                        setResultLabel("" + success);
+
+                        setResultLabel("ID: " + success);
                     }
                 }
                 catch (Exception ex)
                 {
-                    ResultLabel.Text = "Error";
+                    setResultLabel("Error" + ex.Message);
+                }
+                lock (label)
+                {
+                    label = "";
+                    update = false;
+                    updateProgressLabel(label);
                 }
             }
         }
+
+        private void Tl_Tick(object sender, EventArgs e)
+        {
+            if (update)
+            {
+                if (label.Length > 8)
+                {
+                    label = "";
+                }
+                else
+                {
+                    label += ".";
+                }
+                updateProgressLabel(label);
+            }
+        }
+
         private string getFilename(string path)
         {
             string[] ps = path.Split('\\');
@@ -183,6 +281,8 @@ namespace PictureClient
 
         private void BrowseButton_Click(object sender, EventArgs e)
         {
+
+            //testDownload();
             OpenFileDialog file = new OpenFileDialog();
             file.Filter = "Pictures files (*.jpg)|*.jpg";
             if(file.ShowDialog() == DialogResult.OK)
@@ -199,7 +299,8 @@ namespace PictureClient
             {
                 using (PictureService.PictureInterfaceClient service = new PictureService.PictureInterfaceClient())
                 {
-                    int ret = service.createProject(username, password, CreateTextBox.Text);
+                    PictureService.EncryptionData edata = service.getDownloadRights(username, password, false, 1);
+                    int ret = service.createProject(username, password, CreateTextBox.Text, edata.access_key_id, 1);
                     ResultLabel.Text = "" + ret;
                     if(ret > 0)
                     {
@@ -209,7 +310,7 @@ namespace PictureClient
             }
         }
 
-        private void PictureQueueListBox_DragDrop(object sender, DragEventArgs e)
+        public void PictureQueueListBox_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             int count = 0;
@@ -227,6 +328,17 @@ namespace PictureClient
             updatePictureQueue();
         }
 
+        private void updateProgressLabel(string text)
+        {
+            if (this.InvokeRequired)
+            {
+                Invoke(new updateLabelDelegate(this.updateProgressLabel), new object[] { text });
+            }
+            else
+            {
+                progressLabel.Text = text;
+            }
+        }
         private void updatePictureQueue()
         {
             if (this.InvokeRequired)
@@ -258,6 +370,49 @@ namespace PictureClient
         private void ProjectComboBox_TextChanged(object sender, EventArgs e)
         {
             current_project = ProjectComboBox.Text;
+        }
+
+        private void FilesButton_Click(object sender, EventArgs e)
+        {
+            if (listing == null)
+            {
+                listing = new FileListing(this);
+                using (PictureService.PictureInterfaceClient service = new PictureService.PictureInterfaceClient())
+                {
+                    PictureService.EncryptionData edata = service.getDownloadRights(username, password, false, 1);
+                    PictureService.FileInformation[] info = service.getFileInformation(username, password, edata.access_key_id, 1, -1);
+                    foreach (PictureService.FileInformation file in info)
+                    {
+                        listing.AddFile(file.filename, "", file.id);
+                    }
+                }
+                listing.FormClosed += Listing_FormClosed;
+            }
+            listing.Show();
+        }
+
+        private void Listing_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            listing = null;
+        }
+
+        public void downloadFile(string filename, int id, string filelocation)
+        {
+            Download(filelocation, id);
+        }
+
+        public void deleteFile(string filename, int id)
+        {
+            using (PictureService.PictureInterfaceClient service = new PictureService.PictureInterfaceClient())
+            {
+                Random rand = new Random();
+                int r = rand.Next();
+                PictureService.EncryptionData edata = service.getDownloadRights(username, password, false, r);
+                if (service.deleteFile(username, password, id, edata.access_key_id, r))
+                {
+                    MessageBox.Show(filename + " deleted successfully!");
+                }
+            }
         }
     }
 }

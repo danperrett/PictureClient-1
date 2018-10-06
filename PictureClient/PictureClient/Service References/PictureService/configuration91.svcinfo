@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="+xZ2K1+Y9ahpn+APE0uIJIPqoWA=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="bFCnmPnyCVvcan71LYcXBo64l+Q=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="PictureInterfaceSoapBinding">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="PictureInterface" contract="PictureService.PictureInterface" bindingType="basicHttpBinding" address="http://www.codinggain.com/PictureServer/services/PictureInterface" bindingConfiguration="PictureInterfaceSoapBinding">
+    <endpoint name="PictureInterface" contract="PictureService.PictureInterface" bindingType="basicHttpBinding" address="http://www.danperrett.com/PictureServer/services/PictureInterface" bindingConfiguration="PictureInterfaceSoapBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://www.codinggain.com/PictureServer/services/PictureInterface</serializedValue>
+          <serializedValue>http://www.danperrett.com/PictureServer/services/PictureInterface</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

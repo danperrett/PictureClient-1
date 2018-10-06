@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://www.codinggain.com/PictureServer/services/PictureInterface?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://www.danperrett.com/PictureServer/services/PictureInterface?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PictureInterface.wsdl" MetadataType="Wsdl" ID="70ed413d-eb07-4aa6-a0de-5f7d611993b1" SourceId="1" SourceUrl="http://www.codinggain.com/PictureServer/services/PictureInterface?wsdl" />
+    <MetadataFile FileName="PictureInterface.wsdl" MetadataType="Wsdl" ID="ec9960b3-b79e-458c-984b-2f555cec6d13" SourceId="1" SourceUrl="http://www.danperrett.com/PictureServer/services/PictureInterface?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
